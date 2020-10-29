@@ -15,14 +15,14 @@
  * feed(s) takes O(N + M) where N = |s| and M = number of matches 
  * M is bounded by O(N sqrt N) there are no duplicate patterns.
  * 
- * Status: Not tested
+ * Status: Tested (no problems solved yet)
  */
 
 #pragma once
 
 struct AhoCorasick {
     struct node{
-        int p, slink, olink, wrd, pch;
+        int p, pch, slink, olink, wrd;
         map <int, int> nxt, go;
 
         node(int p = -1, int pch = -1)
@@ -35,7 +35,7 @@ struct AhoCorasick {
     vector<node> nodes;
     vector<string> dict;
 
-    AhoCorasick() : nodes(1, node()), dict() {}
+    AhoCorasick() : sz(1), nodes(1, node()), dict() {}
 
     // Returns final node of string s
     int add(const string& s){
@@ -48,6 +48,9 @@ struct AhoCorasick {
             }
             v = nodes[v].nxt[c];
         }
+        nodes[v].wrd = dict.size();
+        dict.push_back(s);
+
         return v;
     }
 
@@ -64,7 +67,7 @@ struct AhoCorasick {
     int slink(int v){
         if(nodes[v].slink == -1){
             int p = nodes[v].p, pch = nodes[v].pch;
-            nodes.slink = v == 0 || p == 0 ? 0 : go(slink(p), pch);
+            nodes[v].slink = v == 0 || p == 0 ? 0 : go(slink(p), pch);
         }
         return nodes[v].slink;
     }
