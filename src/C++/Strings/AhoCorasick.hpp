@@ -10,6 +10,7 @@
  * slink(v) returns suffix link of node v. 
  * olink(v) returns output link of node v.
  * ADD ALL THE PATTERNS BEFORE CREATING SUFFIX LINKS!!!
+ * By default it does not work with duplicate patterns, be careful!
  * 
  * Time: construction takes O(N), where N = sum of lenghts of patterns. 
  * feed(s) takes O(N + M) where N = |s| and M = number of matches 
