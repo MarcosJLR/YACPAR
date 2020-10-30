@@ -16,7 +16,7 @@
  * feed(s) takes O(N + M) where N = |s| and M = number of matches 
  * M is bounded by O(N sqrt N) there are no duplicate patterns.
  * 
- * Status: Tested (no problems solved yet)
+ * Status: Tested (own tests + 1 problem)
  */
 
 #pragma once
